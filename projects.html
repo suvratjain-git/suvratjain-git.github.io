@@ -1,0 +1,251 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>My Projects</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link href="node_modules/lightbox2/dist/css/lightbox.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Header -->
+            <header id="header">
+                <a href="index.html" class="logo">Projects</a>
+            </header>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul class="links">
+                    <li><a href="index.html#header">Home</a></li>
+                    <li><a href="experience.html">Experience</a></li>
+                    <li class="active"><a href="projects.html">Projects</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                </ul>
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/suvratjain97/" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                    <li><a href="https://github.com/suvratjain12" class="icon fa-github"><span class="label">GitHub</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- Post -->
+                <section class="post">
+                    <header class="major">
+                        <h1>
+                            My Projects<br />
+                        </h1>
+                    </header>
+
+                    <!-- Table of Contents -->
+                    <h2><u>Table of Contents</u></h2>
+                    <ol>
+                        <li><a href="projects.html#robot_basketball">Robot Basketball - 12/14/2019</a></li>
+                        <li><a href="projects.html#backpack_bailout">Backpack Bailout (AI Game) - 04/22/2019</a></li>
+                        <li><a href="projects.html#collision_avoidance_robot">Collision Avoidance Robot (C.A.R) - 03/29/2019<br /></a></li>
+                        <li><a href="projects.html#rpsx">RPSx Android App - 08/01/2018</a></li>
+                        <li><a href="projects.html#water_analogy">Water Analogy of an Electrical Network - 05/01/2018</a></li>
+                    </ol>
+                    <hr />
+
+                    <!--Robot Basketball Project Start -->
+                    <header id="robot_basketball">
+                        <center><h2><u>Robot Basketball</u></h2></center>
+                    </header>
+                    <p>Robot Basketball was a capstone project, a graduation requirement for my bachelor's degree, that I did for my Senior Design at UCF. Orlando being the city of themed entertainment industry and my experience working at Universal and interning at Birket allowed me to take on this engineering challenge. Robot Basketball is an advanced Human Entertainment system that allows users to play basketball with an xBox controller by meticulously integrating Computer Vision, Bluetooth, Custom PCB and firmware, and PyGames Game Engine like technologies.</p>
+                    <p>The Project is split into three primary systems: Arena, Robot, and Game. The robot system is the device for physically interacting with the basketball court and basketball. The robot receives commands from the arena control-system and executes them. The Arena system encompasses all things related to the basketball court, basketball, physical frame structure, and computer vision. The Computer Vision subsystem is used to determine the position and orientation of the robot on the court. It also tracks the position of the ball. The Game System involves taking data in from the player and displaying information such as game and robot status, instant replays, and high-level robot control functionality.</p>
+                    <p>The Robot subsystem is comprised of all the components required to pick up and launch a ball from various places on the court. The robot acts as an Input-Output device that simply takes inputs from other systems and executes them based on a set of parameters on the robot. Additionally, it provides insight into its state by providing information to other systems.</p>
+                    <p>My role in this project was to manage and operate both the Arena and Robot's Electrical Systems along with Arena-Robot Integration Communication System. To accomplish so a custom PCB for the Robot was designed using Diptrace's Schematic capture and PCB design tool suite. For the Arena, no such PCB was necessary as a lot of the work was done in configuring the Ubuntu OS to suit the project's needs. One big challenge that needed to be overcome during the development process was getting Robot and Jetson Nano's bluetooth to work together. Jetson Nano has a custom Linux image and therefore, to the get the bluetooth on Serial Port Profile (SPP) to work the entire kernel had to be recompiled with 'rfcomm' option specified. Sparkfun's SilverSMiRF RN-15 based bluetooth module was used on the robot to perform bluetooth communication. A custom packet was also designed for successful exchange of information. Additionally, I was also in-charge of programming the NeoPixel animations on the Arena and ensured that the sound and lights were in sync by working with my teammates. </p>
+                    <p>Overall, the project was a success and a great learning experience that allowed me to learn and grow as a student, a team player, and especially as a professional engineer. A glimpse at my work is displayed below along with a demo video:</p>
+                    <div class="box alt">
+                        <div class="row gtr-100 gtr-uniform">
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/MCU.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/MCU.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/Power Distribution.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/Power Distribution.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/PWM Controller.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/PWM Controller.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/Motor Controller.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/Motor Controller.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/Bluetooth.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/Bluetooth.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/IMU Interface.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/IMU Interface.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/PCB-Top.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/PCB-Top.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/PCB-Bottom.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/PCB-Bottom.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/PCB-Soldered-Top.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/PCB-Soldered-Top.jpg" alt="" />
+                                </a>
+                            </div>
+
+                            <div class="col-4">
+                                <a class="image fit" href="Projects/Robot Basketball/PCB-Soldered-Bottom.jpg" data-lightbox="water_analogy">
+                                    <img src="Projects/Robot Basketball/PCB-Soldered-Bottom.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <p><center><a href="https://www.youtube.com/watch?v=F2Qsd2OXz34">Robot Basketball Demo Video</a></center></p>
+                    <!--Robot Basketball Project End -->
+
+                    <!--Backpack Bailout Project Start -->
+                    <header id="backpack_bailout">
+                        <center><h2><u>Backpack Bailout - AI Game</u></h2></center>
+                    </header>
+                    <p>Backpack Bailout is a scavenger hunt type escape game which was designed by a group of 3 students including myself using Unity game engine. This was a 12 weeks long project that required an immense amount of learning curve. Through this project I learned how to work in a team, honed my GitHub skills, learned how to program in C# and how to work with Unity Game Engine. </p>
+                    <p>In the game, a fellow student loses her backpack and she needs it to ace her finals. However, a bully named "Chad" is in your way and tries to prevent you from helping her out. With the help of AJ you try to rescue the backpack by helping him clean the administration room while also trying to escaping from Chad's fury. Failure to place all the objects in their respective spot in time could cause your classmate to fail her finals.</p>
+                    <p>My job was to write AI scripts for all the NPCs (Non-Player Characters). A lot of technical details had to be learned which were documented in the "Project Development Timeline" below.</p>
+                    <p>
+                        Source Code: <a href="https://github.com/suvratjain12/Backpack-Bailout">GitHub</a>
+                        </br>
+                        Weekly Updates: <a href="https://capteam8.wordpress.com">Project Development Timeline</a>
+                    </p>
+                    <p><center><a href="https://youtu.be/ET4k2OR2R7M">Final Gameplay Demo</a></center></p>
+                    <!--Backpack Bailout Project End -->
+
+                    <hr />
+
+                    <!--Collision Avoidance Robot Project Start -->
+                    <header id="collision_avoidance_robot">
+                        <center><h2><u>Collision Avoidance Robot (C.A.R)</u></h2></center>
+                    </header>
+                    <p>The project was a robot that autonomously avoided collisions from walls and objects. An HC-SR04 sensor was used on a rotating head to determine the optimal path for traveling forward. Our navigation method was similar to many systems being used today. The most notable example is submarines, although it is mostly older submarines that still use SONAR. Similar to how advanced SONAR systems operate on a constant rotation, our robot had its sensor mounted on a rotating “head”. The robot swiveled its single sensor one-hundred-eighty degrees so that it could collect distance measurements in different directions. This method was selected to minimize the amount of new hardware required to get the robot working. The sensor has a trigger pin and an echo pin in addition to the Vcc and GND. The trigger pin stays high for 10 microseconds which sends 8 cycles of sonic burst that travel at the speed of sound. These waves are then detected by the echo pin which returns the travel time in microseconds. Finally, the distance is calculated by multiplying the speed of sound in air (330 m/s or 0.034cm/µs) by time and dividing by 2 as the time obtained is the travel and return time of the sounds waves. The microcontroller used was an Arduino Uno and servos were used for the head and the wheels. A demo is presented below:</p>
+                    <center>
+                        <iframe width="600" height="500" src="https://www.youtube.com/embed/Y2D8hRYKl7Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </center>
+                    <!--Collision Avoidance Robot Project End -->
+
+                    <hr />
+
+                    <!--RPSx Project Start -->
+                    <header id="rpsx">
+                        <center><h2><u>Rock Paper Scissor X-treme Android App</u></h2></center>
+                    </header>
+                    <p>RPS X-treme is the next evolution of your favorite juvenile game - now you can settle your petty disputes from your handheld device, or set up tournaments to determine the alpha member of your entire friend group. To be exact, RPS X-treme is an Android application that makes it possible to set up/join lobbies for rock-paper-scissors matches/tournaments, and also keeps track of a variety of player performance statistics. Players will be able to log in and make or join a lobby.</p>
+
+                    <p>Source Code: <a href="https://github.com/suvratjain12/RPSx-COP_4331C">GitHub</a></p>
+                    <center>
+                        <iframe width="600" height="500" src="https://www.youtube.com/embed/oM9_euICbaM"></iframe>
+                    </center>
+                    <!--RPSx Project End -->
+
+                    <hr />
+
+                    <!--Water Analogy Project Start -->
+                    <header id="water_analogy">
+                        <center><h2><u>Water Analogy of an Electrical Network</u></h2></center>
+                        <p>Following are the images of the PCB(left) and the Schematic(right) designed by me using Eagle CAD.</p>
+                        <div class="box alt">
+                            <div class="row gtr-100 gtr-uniform">
+
+                                <div class="col-6">
+                                    <a class="image fit" href="Projects/Water Analogy of a Circuit/IEEE_PCB.jpeg" data-lightbox="water_analogy">
+                                        <img src="Projects/Water Analogy of a Circuit/IEEE_PCB.jpeg" alt="" />
+                                    </a>
+                                </div>
+
+                                <div class="col-6">
+                                    <a class="image fit" href="Projects/Water Analogy of a Circuit/IEEE - PCB Schematic.jpeg" data-lightbox="water_analogy">
+                                        <img src="Projects/Water Analogy of a Circuit/IEEE - PCB Schematic.jpeg" alt="" />
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </header>
+                    <p>This was a project for IEEE Power and Energy Society. The task was to simulate how resistor, capacitor, and inductor affect current and voltage in a circuit using water. My task was to design the PCB and get it manufactured. I used Eagle CAD to do so because it is open source and has a lot of resources for assitance. The PCB serveed as the central control unit of the system to which all the sensors and raspberry were connected for operation. Additionally, I helped with the design and assembly of the overall structure. Following is the image of the product. In operation, the LEDs dictate the flow of the water (i.e. current) and the LCD screen allows the user to perform KVL, KCL and other basic circuit analysis operations.</p>
+                    <center>
+                        <a class="image fit" href="Projects/Water Analogy of a Circuit/IEEE Water Analogy.jpeg" data-lightbox="water_analogy">
+                            <img src="Projects/Water Analogy of a Circuit/IEEE Water Analogy.jpeg" alt="" />
+                        </a>
+                    </center>
+
+                    <!--Water Analogy Project End -->
+
+                    <hr />
+
+
+
+
+                </section>
+            </div>
+
+            <footer id="footer">
+                <section class="split contact">
+                    <section>
+                        <h3>Email</h3>
+                        <p><a href="#">suvratjain101@gmail.com</a></p>
+                    </section>
+                    <section>
+                        <h3>Social</h3>
+                        <ul class="icons alt">
+                            <li><a href="https://www.linkedin.com/in/suvratjain97/" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                            <li><a href="https://github.com/suvratjain12" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </section>
+                </section>
+            </footer>
+
+        </div>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <script src="node_modules/lightbox2/dist/js/lightbox.js"></script>
+
+	</body>
+</html>
