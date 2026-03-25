@@ -11,6 +11,88 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.resume-preview-trigger {
+				display: block;
+				border: 2px solid rgba(144, 144, 144, 0.25);
+				line-height: 0;
+				text-decoration: none;
+				overflow: hidden;
+			}
+
+			.resume-preview-trigger:hover {
+				border-color: #18bfef;
+			}
+
+			.resume-preview-trigger img {
+				display: block;
+				width: 100%;
+				height: auto;
+				transition: transform 0.2s ease-in-out;
+			}
+
+			.resume-preview-trigger:hover img {
+				transform: scale(1.01);
+			}
+
+			.resume-lightbox {
+				position: fixed;
+				inset: 0;
+				display: none;
+				align-items: center;
+				justify-content: center;
+				padding: 2rem;
+				background: rgba(30, 37, 45, 0.9);
+				z-index: 10000;
+			}
+
+			.resume-lightbox.is-visible {
+				display: flex;
+			}
+
+			.resume-lightbox-dialog {
+				position: relative;
+				width: min(100%, 960px);
+				height: min(90vh, 1100px);
+				background: #ffffff;
+				box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+			}
+
+			.resume-lightbox-close {
+				position: absolute;
+				top: -2.75rem;
+				right: 0;
+				border: 0;
+				background: transparent;
+				color: #ffffff;
+				cursor: pointer;
+				font-family: "Source Sans Pro", Helvetica, sans-serif;
+				font-size: 0.9rem;
+				font-weight: 900;
+				letter-spacing: 0.075em;
+				text-transform: uppercase;
+			}
+
+			.resume-lightbox-frame {
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+
+			@media screen and (max-width: 736px) {
+				.resume-lightbox {
+					padding: 1rem;
+				}
+
+				.resume-preview-trigger {
+					padding: 0;
+				}
+
+				.resume-lightbox-dialog {
+					height: 85vh;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -43,9 +125,11 @@
 							<section class="post">
 								<header class="major">
 									<p><a href="resume/Suvrat_Jain_Resume.pdf" download>Click Here to Download</a></p>
-                                    <div class="box">
-                                        <div class="image main"><img src="resume/Suvrat_Jain_Resume.pdf" alt="" /></div>
-                                    </div>
+									<div class="box">
+										<a href="resume/Suvrat_Jain_Resume.pdf" class="resume-preview-trigger" id="resumePreviewTrigger">
+											<img src="resume/Suvrat_Jain_Resume_thumbnail.png" alt="Preview of Suvrat Jain resume" />
+										</a>
+									</div>
 								</header>
 							</section>
 					</div>
@@ -75,6 +159,17 @@
 
 			</div>
 
+		<div class="resume-lightbox" id="resumeLightbox" aria-hidden="true">
+			<div class="resume-lightbox-dialog" role="dialog" aria-modal="true" aria-label="Resume preview">
+				<button type="button" class="resume-lightbox-close" id="resumeLightboxClose">Close</button>
+				<iframe
+					class="resume-lightbox-frame"
+					src="resume/Suvrat_Jain_Resume.pdf#view=FitH"
+					title="Resume PDF preview">
+				</iframe>
+			</div>
+		</div>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -83,6 +178,45 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				(function() {
+					var trigger = document.getElementById('resumePreviewTrigger');
+					var lightbox = document.getElementById('resumeLightbox');
+					var closeButton = document.getElementById('resumeLightboxClose');
+
+					if (!trigger || !lightbox || !closeButton) {
+						return;
+					}
+
+					function closeLightbox() {
+						lightbox.classList.remove('is-visible');
+						lightbox.setAttribute('aria-hidden', 'true');
+						document.body.style.overflow = '';
+					}
+
+					function openLightbox(event) {
+						event.preventDefault();
+						lightbox.classList.add('is-visible');
+						lightbox.setAttribute('aria-hidden', 'false');
+						document.body.style.overflow = 'hidden';
+					}
+
+					trigger.addEventListener('click', openLightbox);
+					closeButton.addEventListener('click', closeLightbox);
+
+					lightbox.addEventListener('click', function(event) {
+						if (event.target === lightbox) {
+							closeLightbox();
+						}
+					});
+
+					document.addEventListener('keydown', function(event) {
+						if (event.key === 'Escape' && lightbox.classList.contains('is-visible')) {
+							closeLightbox();
+						}
+					});
+				})();
+			</script>
 
 	</body>
 </html>
