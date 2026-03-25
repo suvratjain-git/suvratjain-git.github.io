@@ -11,6 +11,214 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			.experience-intro {
+				max-width: 42rem;
+				margin: 0 auto;
+			}
+
+			.timeline {
+				position: relative;
+				margin-top: 4rem;
+				padding: 1rem 0;
+			}
+
+			.timeline::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 50%;
+				width: 2px;
+				background: rgba(33, 41, 49, 0.15);
+				transform: translateX(-50%);
+			}
+
+			.timeline-item {
+				position: relative;
+				display: grid;
+				grid-template-columns: 1fr 4rem 1fr;
+				gap: 1.5rem;
+				align-items: start;
+				margin-bottom: 3rem;
+			}
+
+			.timeline-item:last-child {
+				margin-bottom: 0;
+			}
+
+			.timeline-summary,
+			.timeline-detail {
+				background: #ffffff;
+				border: 1px solid rgba(33, 41, 49, 0.1);
+				box-shadow: 0 1rem 2.5rem rgba(33, 41, 49, 0.08);
+			}
+
+			.timeline-summary {
+				padding: 1.5rem;
+				align-self: center;
+			}
+
+			.timeline-item:nth-child(odd) .timeline-summary {
+				grid-column: 1;
+				text-align: right;
+			}
+
+			.timeline-item:nth-child(even) .timeline-summary {
+				grid-column: 3;
+				text-align: left;
+			}
+
+			.timeline-node {
+				grid-column: 2;
+				position: relative;
+				z-index: 1;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 4rem;
+				height: 4rem;
+				margin: 0 auto;
+				border: 0;
+				border-radius: 999px;
+				background: #212931;
+				color: #ffffff;
+				cursor: pointer;
+				font-family: "Source Sans Pro", Helvetica, sans-serif;
+				font-size: 0.85rem;
+				font-weight: 900;
+				letter-spacing: 0.09em;
+				text-transform: uppercase;
+				transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+				box-shadow: 0 0 0 0.5rem rgba(255, 255, 255, 1);
+			}
+
+			.timeline-node:hover,
+			.timeline-node:focus-visible,
+			.timeline-item.is-active .timeline-node {
+				background: #18bfef;
+				transform: scale(1.06);
+				outline: none;
+			}
+
+			.timeline-node-label {
+				position: absolute;
+				top: 50%;
+				width: 12rem;
+				transform: translateY(-50%);
+				color: #7f888f;
+				font-family: "Source Sans Pro", Helvetica, sans-serif;
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				pointer-events: none;
+			}
+
+			.timeline-item:nth-child(odd) .timeline-node-label {
+				left: calc(100% + 1rem);
+				text-align: left;
+			}
+
+			.timeline-item:nth-child(even) .timeline-node-label {
+				right: calc(100% + 1rem);
+				text-align: right;
+			}
+
+			.timeline-detail {
+				grid-column: 1 / -1;
+				display: none;
+				padding: 2rem;
+			}
+
+			.timeline-item.is-active .timeline-detail {
+				display: block;
+			}
+
+			.timeline-detail-grid {
+				display: grid;
+				grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+				gap: 2rem;
+				align-items: start;
+			}
+
+			.timeline-detail-copy h2 {
+				margin-bottom: 0.5rem;
+			}
+
+			.timeline-role {
+				display: block;
+				margin-bottom: 1rem;
+				color: #18bfef;
+				font-family: "Source Sans Pro", Helvetica, sans-serif;
+				font-size: 0.95rem;
+				font-weight: 900;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.timeline-bullets {
+				margin: 0 0 2rem 0;
+				padding-left: 1.25rem;
+			}
+
+			.timeline-bullets li {
+				list-style: disc;
+				margin-bottom: 0.75rem;
+			}
+
+			.timeline-image img {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			@media screen and (max-width: 980px) {
+				.timeline::before {
+					left: 2rem;
+					transform: none;
+				}
+
+				.timeline-item {
+					grid-template-columns: 4rem 1fr;
+				}
+
+				.timeline-summary,
+				.timeline-item:nth-child(odd) .timeline-summary,
+				.timeline-item:nth-child(even) .timeline-summary {
+					grid-column: 2;
+					text-align: left;
+				}
+
+				.timeline-node {
+					grid-column: 1;
+				}
+
+				.timeline-node-label {
+					position: static;
+					display: block;
+					width: auto;
+					margin-top: 0.5rem;
+					transform: none;
+					text-align: center !important;
+				}
+
+				.timeline-detail {
+					grid-column: 2;
+				}
+			}
+
+			@media screen and (max-width: 736px) {
+				.timeline-summary,
+				.timeline-detail {
+					padding: 1.25rem;
+				}
+
+				.timeline-detail-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -36,93 +244,142 @@
                 </ul>
             </nav>
 
-            <!-- Main -->
-            <div id="main">
+	            <!-- Main -->
+	            <div id="main">
+	                <section class="post">
+	                    <header class="major">
+	                        <span class="date">Career Timeline</span>
+	                        <h1>Experience</h1>
+	                        <p class="experience-intro">A visual timeline of my professional path. Click any milestone to open the full story, responsibilities, and project context.</p>
+	                    </header>
 
-                <!-- Post -->
-                <section class="post">
-                    <header class="major">
-                        <span class="date">January 2020 - Present</span>
-                        <h1>
-                            <u>Birket Engineering, Inc.</u>
-                        </h1>
-                        <h3>
-                            <font size="5">-Embedded Systems Engineer-</font>
-                        </h3>
-                    </header>
-                    <div class="image fit"><img src="images/birket.jpg" alt="" /></div>
-                    <p>I am excited to announce that starting January 1, 2020 I will be working as a full-time Embedded Systems Engineer at Birket Engineering. I am excited for this opportunity and cannot wait to succeed at my job!</p>
-                </section>
+	                    <div class="timeline" id="experienceTimeline">
+	                        <article class="timeline-item is-active">
+	                            <div class="timeline-summary">
+	                                <span class="date">January 2020 - Present</span>
+	                                <h3>Birket Engineering, Inc.</h3>
+	                                <p>Full-time embedded systems engineering focused on hardware-software integration, firmware, and electrical systems work.</p>
+	                            </div>
+	                            <button class="timeline-node" type="button" aria-expanded="true" aria-controls="timeline-detail-1">
+	                                2020
+	                                <span class="timeline-node-label">Embedded Systems Engineer</span>
+	                            </button>
+	                            <div class="timeline-detail" id="timeline-detail-1">
+	                                <div class="timeline-detail-grid">
+	                                    <div class="timeline-image">
+	                                        <img src="images/birket.jpg" alt="Birket Engineering" />
+	                                    </div>
+	                                    <div class="timeline-detail-copy">
+	                                        <span class="date">January 2020 - Present</span>
+	                                        <h2>Birket Engineering, Inc.</h2>
+	                                        <span class="timeline-role">Embedded Systems Engineer</span>
+	                                        <ul class="timeline-bullets">
+	                                            <li>Worked on embedded platforms where hardware and firmware had to operate as a single system.</li>
+	                                            <li>Built on internship experience and transitioned into a full-time engineering role.</li>
+	                                            <li>Continued developing depth in electronics, integration, and production-minded engineering work.</li>
+	                                        </ul>
+	                                        <p>I joined Birket full-time on January 1, 2020 as an Embedded Systems Engineer. The role represents the point where prior internship work turned into long-term engineering ownership and deeper system-level responsibility.</p>
+	                                        <p>The position aligns closely with my core interests in robotics, firmware development, and hardware-software integration, and it marks the strongest continuation point in my technical career to date.</p>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </article>
 
-                <!-- Post -->
-                <section class="post">
-                    <header class="major">
-                        <span class="date">May 2019 - December 2019</span>
-                        <h1>
-                            <u>Birket Engineering, Inc.</u>
-                        </h1>
-                        <h3>
-                            <font size="5">-Embedded Systems Intern-</font>
-                        </h3>
-                        <blockquote>
-                            <ul class="alt">
-                                <li>Programmed 32-bit ARM Cortex-M microcontrollers such as STM32F7 in C</li>
-                                <li>Designed and Manufactured Electrical Schematics and Printed Circuit Boards</li>
-                                <li>Applied Data Structures and Algorithms to data obtained via UART, SPI, and I2C  protocols</li>
-                            </ul>
-                        </blockquote>
-                    </header>
-                    <div class="image fit"><img src="images/birket.jpg" alt="" /></div>
-                    <p>Despite getting internship opportunities from the likes of Facebook, I ended up chosing Birket as my last Summer/Fall Intership before entering the real world and needless to say, I have no regrets. Working at Birket was simply the greatest pleasure I had during my last few semesters at UCF.</p>
-                </section>
+	                        <article class="timeline-item">
+	                            <div class="timeline-summary">
+	                                <span class="date">May 2019 - December 2019</span>
+	                                <h3>Birket Engineering, Inc.</h3>
+	                                <p>An internship centered on microcontrollers, PCB design, and applied embedded systems work in a professional environment.</p>
+	                            </div>
+	                            <button class="timeline-node" type="button" aria-expanded="false" aria-controls="timeline-detail-2">
+	                                2019
+	                                <span class="timeline-node-label">Embedded Systems Intern</span>
+	                            </button>
+	                            <div class="timeline-detail" id="timeline-detail-2">
+	                                <div class="timeline-detail-grid">
+	                                    <div class="timeline-image">
+	                                        <img src="images/birket.jpg" alt="Birket Engineering internship" />
+	                                    </div>
+	                                    <div class="timeline-detail-copy">
+	                                        <span class="date">May 2019 - December 2019</span>
+	                                        <h2>Birket Engineering, Inc.</h2>
+	                                        <span class="timeline-role">Embedded Systems Intern</span>
+	                                        <ul class="timeline-bullets">
+	                                            <li>Programmed 32-bit ARM Cortex-M microcontrollers such as the STM32F7 in C.</li>
+	                                            <li>Designed and manufactured electrical schematics and printed circuit boards.</li>
+	                                            <li>Applied data structures and algorithms to data moving across UART, SPI, and I2C interfaces.</li>
+	                                        </ul>
+	                                        <p>This internship gave me direct experience with professional embedded workflows and made the transition from classroom concepts to production engineering feel real. The work was technical, hands-on, and close to the hardware.</p>
+	                                        <p>It also became a defining checkpoint in my career, because it confirmed that embedded systems was the environment where I wanted to keep building long term.</p>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </article>
 
-                <!-- Post -->
-                <section class="post">
-                    <header class="major">
-                        <span class="date">August 2018 - December 2018</span>
-                        <h1>
-                            <u>Universal Creative</u>
-                        </h1>
-                        <h3>
-                            <font size="5">-Engineering Intern-</font>
-                        </h3>
-                        <blockquote>
-                            <ul class="alt">
-                                <li>Implemented a Non-GPS Indoor Navigation System for Drones</li>
-                                <li>Researched and Developed cutting-edge technologies for UAVs</li>
-                                <li>Developed and Maintained Vendor Relations</li>
-                            </ul>
-                        </blockquote>
-                    </header>
-                    <div class="image left"><img src="images/Universal/Interns.jpg" alt="" /></div>
-                    <p>Universal Creative is the design, engineering, project management, and research and development division of Universal Parks & Resorts. I worked in the core engineering department with the Show Systems team. As an Engineering Intern, my task was to help with UAV research and development. Some of the tasks that I performed included researching cutting-edge battery technologies for UAVs, finding commercial solutions for battery management and storage systems, creating and performing flight test plans, assisting with site mapping and surveying operations and discovering technologies that allow non-GPS autonomous navigation with UAVs indoors.</p>
-                    <p>A major part of my internship was to discover cost effective yet reliable systems that would allow any UAV to perform autonomous indoor navigation without the use of GPS. The challenge was to find a technology which would be both cost effective and reliable unlike the traditional Computer Vision systems which solely provide reliability. With a lot of hard work and dedication my team and I presented Universal with a system and a proof of concept that reduced the costs of indoor navigation by ~82% and costs of reliability by ~17% compared to the traditional computer vision system. It met the requirements for company use case by far and the senior director of Show Systems was pleased with our progress. This experience allowed me to expand both my professional and personal network. Additionally, I was exposed to great talent that pushed me to be the best version of myself. At the end of the day, interning at Universal Creative was an incredible experience and I am thankful for the opportunity it has given me to grow and improve as a Computer Engineer.</p>
-                </section>
+	                        <article class="timeline-item">
+	                            <div class="timeline-summary">
+	                                <span class="date">August 2018 - December 2018</span>
+	                                <h3>Universal Creative</h3>
+	                                <p>Engineering internship on UAV research, indoor navigation concepts, and technical vendor evaluation.</p>
+	                            </div>
+	                            <button class="timeline-node" type="button" aria-expanded="false" aria-controls="timeline-detail-3">
+	                                2018
+	                                <span class="timeline-node-label">Engineering Intern</span>
+	                            </button>
+	                            <div class="timeline-detail" id="timeline-detail-3">
+	                                <div class="timeline-detail-grid">
+	                                    <div class="timeline-image">
+	                                        <img src="images/Universal/Interns.jpg" alt="Universal Creative internship" />
+	                                    </div>
+	                                    <div class="timeline-detail-copy">
+	                                        <span class="date">August 2018 - December 2018</span>
+	                                        <h2>Universal Creative</h2>
+	                                        <span class="timeline-role">Engineering Intern</span>
+	                                        <ul class="timeline-bullets">
+	                                            <li>Implemented a non-GPS indoor navigation system for drones.</li>
+	                                            <li>Researched and developed emerging technologies for UAV applications.</li>
+	                                            <li>Maintained vendor relationships and helped evaluate commercial solutions.</li>
+	                                        </ul>
+	                                        <p>At Universal Creative, I worked with the Show Systems team on UAV-focused engineering problems. A major focus was identifying reliable and cost-effective approaches for indoor autonomous navigation without relying on GPS.</p>
+	                                        <p>That challenge pushed me into a systems tradeoff mindset: balancing reliability, cost, and operational fit instead of just chasing technically impressive solutions. Our proof of concept substantially reduced costs compared to more traditional computer vision-heavy approaches.</p>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </article>
 
-                <section class="post">
-                    <header class="major">
-                        <span class="date"> May 2017 - November 2018 </span>
-                        <h1>
-                            <u>PraxSoft Inc.</u>
-                        </h1>
-                        <h3>
-                            <font size="5">-Assistant Engineer-</font>
-                        </h3>
-                        <blockquote>
-                            <ul class="alt">
-                                <li>Worked with Wireless Sensors and Embedded Controllers</li>
-                                <li>Conducted Data Analysis and Generated Technical Report</li>
-                                <li>Tested PCBs and performed Quality Assurance</li>
-                            </ul>
-                        </blockquote>
-                    </header>
-                    <div class="image right"><img src="images/PraxSoft/Installation.jpg" alt="" /></div>
-                    <p>Praxsoft Inc. is an Environmental Engineering R&D company that provides technological services allowing businesses to monitor and maintain their assets remotely. They use an integration of streaming communications, web-based software, and Wireless Sensor Nodes (WSNs) to manage and control infrastructure. I worked as Assistant Engineer under the CEO Rhonda Copley, and VP of Engineering Amin Ismail, Ph.D. It was a great learning experience both personally and professionally. I learned about the industry and how theoretical concepts in school can be used to influence people and change lives.</p>
-                    <div class="image left"><img src="images/PraxSoft/Wx Panel.jpg" alt="" /></div>
-                    <p>I was brought on board to help with the research and development of the Fog Monitoring System, a project undertaken by PraxSoft for the Florida Department of Transportation (FDOT). The Fog Monitoring System uses data from several Fog Monitoring stations with embedded sensors that measure temperature, humidity, wind speed, wind direction, barometer etc., and feeds them into a weather model that then predicts upcoming fog or rain events and notifies the authorities via an email alert. During my time there, I assembled 20 FMS units and tested and troubleshot all of the equipment before installation. An example can be seen in the image on the left. Additionally, I collected the sensor data, the weather model results, and generated technical reports demonstrating the success rate (approx. 90%) of the system. These reports were then turned in to FDOT. Interning at PraxSoft was a great a technical experience and I am thankful for VP of Engineering Amin Ismail, Ph.D. and the CEO Rhonda Copley for providing me with this opportunity.</p>
-                </section>
-
-            </div>
+	                        <article class="timeline-item">
+	                            <div class="timeline-summary">
+	                                <span class="date">May 2017 - November 2018</span>
+	                                <h3>PraxSoft Inc.</h3>
+	                                <p>Early engineering role focused on wireless sensors, environmental monitoring systems, testing, and technical reporting.</p>
+	                            </div>
+	                            <button class="timeline-node" type="button" aria-expanded="false" aria-controls="timeline-detail-4">
+	                                2017
+	                                <span class="timeline-node-label">Assistant Engineer</span>
+	                            </button>
+	                            <div class="timeline-detail" id="timeline-detail-4">
+	                                <div class="timeline-detail-grid">
+	                                    <div class="timeline-image">
+	                                        <img src="images/PraxSoft/Installation.jpg" alt="PraxSoft installation work" />
+	                                    </div>
+	                                    <div class="timeline-detail-copy">
+	                                        <span class="date">May 2017 - November 2018</span>
+	                                        <h2>PraxSoft Inc.</h2>
+	                                        <span class="timeline-role">Assistant Engineer</span>
+	                                        <ul class="timeline-bullets">
+	                                            <li>Worked with wireless sensors and embedded controllers.</li>
+	                                            <li>Conducted data analysis and generated technical reports.</li>
+	                                            <li>Tested PCBs, assembled systems, and handled quality assurance work.</li>
+	                                        </ul>
+	                                        <p>PraxSoft gave me early exposure to applied engineering in the field. The work connected hardware, data, and real operational outcomes for infrastructure and environmental monitoring systems.</p>
+	                                        <p>A large part of the work involved the Fog Monitoring System for the Florida Department of Transportation, where I helped assemble units, troubleshoot equipment, collect data, and support technical reporting that demonstrated system performance in practice.</p>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </article>
+	                    </div>
+	                </section>
+	            </div>
 
             <!-- Footer -->
             <footer id="footer">
@@ -151,6 +408,42 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				(function() {
+					var timeline = document.getElementById('experienceTimeline');
 
-	</body>
+					if (!timeline) {
+						return;
+					}
+
+					var items = Array.prototype.slice.call(timeline.querySelectorAll('.timeline-item'));
+
+					function setActiveItem(nextItem) {
+						items.forEach(function(item) {
+							var button = item.querySelector('.timeline-node');
+							var isActive = item === nextItem;
+
+							item.classList.toggle('is-active', isActive);
+
+							if (button) {
+								button.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+							}
+						});
+					}
+
+					items.forEach(function(item) {
+						var button = item.querySelector('.timeline-node');
+
+						if (!button) {
+							return;
+						}
+
+						button.addEventListener('click', function() {
+							setActiveItem(item);
+						});
+					});
+				})();
+			</script>
+
+		</body>
 </html>
