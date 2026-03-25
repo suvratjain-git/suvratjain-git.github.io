@@ -1,0 +1,13 @@
+{
+  "name": "suvratjain-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio website for suvratjain.com",
+  "scripts": {
+    "serve": "npx http-server .",
+    "test": "echo 'No automated tests configured'"
+  },
+  "dependencies": {
+    "lightbox2": "2.10.0"
+  }
+}
