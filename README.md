@@ -52,6 +52,7 @@ Required frontmatter fields:
 Optional frontmatter fields:
 
 - `image`
+- `thumbnail`
 - `active`
 
 ## Notes

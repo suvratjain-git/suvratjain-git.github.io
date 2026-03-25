@@ -56,9 +56,41 @@
 			}
 
 			.timeline-summary {
-				padding: 1.5rem;
+				padding: 1.25rem;
 				align-self: center;
 				transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+			}
+
+			.timeline-summary-header {
+				margin-bottom: 1rem;
+			}
+
+			.timeline-summary-header .date {
+				display: block;
+				margin-bottom: 0.35rem;
+			}
+
+			.timeline-summary-header h3 {
+				margin: 0;
+			}
+
+			.timeline-summary-media {
+				border-radius: 0.35rem;
+				overflow: hidden;
+				background: rgba(33, 41, 49, 0.05);
+			}
+
+			.timeline-summary-media img {
+				display: block;
+				width: 100%;
+				height: 14rem;
+				object-fit: cover;
+				transition: transform 0.35s ease;
+			}
+
+			.timeline-item:hover .timeline-summary-media img,
+			.timeline-item.is-active .timeline-summary-media img {
+				transform: scale(1.03);
 			}
 
 			.timeline-item:hover .timeline-summary,
@@ -222,7 +254,7 @@
 				background: #ffffff;
 			}
 
-			@media screen and (max-width: 786) {
+			@media screen and (max-width: 768px) {
 				.timeline::before {
 					left: 2.2rem;
 					transform: none;
@@ -363,16 +395,18 @@
 						var safeRole = escapeHtml(entry.role);
 						var safeDate = escapeHtml(entry.date);
 						var safeYear = escapeHtml(entry.year);
-						var safeSummary = escapeHtml(entry.summary);
 						var safeImage = escapeHtml(entry.image || '');
+						var safeThumbnail = escapeHtml(entry.thumbnail || safeImage);
 						var safeSlug = escapeHtml(entry.slug);
 
 						return [
 							'<article class="timeline-item' + (isActive ? ' is-active' : '') + '" data-slug="' + safeSlug + '">',
 							'<div class="timeline-summary">',
+							'<div class="timeline-summary-header">',
 							'<span class="date">' + safeDate + '</span>',
 							'<h3>' + safeTitle + '</h3>',
-							'<p>' + safeSummary + '</p>',
+							'</div>',
+							safeThumbnail ? '<div class="timeline-summary-media"><img src="' + safeThumbnail + '" alt="' + safeTitle + ' thumbnail" /></div>' : '',
 							'</div>',
 							'<button class="timeline-node" type="button" aria-expanded="' + (isActive ? 'true' : 'false') + '" aria-controls="timeline-detail-' + safeSlug + '">',
 							safeYear,

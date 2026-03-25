@@ -153,6 +153,7 @@ function readExperienceEntries() {
       year: String(data.year),
       summary: String(data.summary),
       image: data.image ? String(data.image) : '',
+      thumbnail: data.thumbnail ? String(data.thumbnail) : (data.image ? String(data.image) : ''),
       sort: Number.isFinite(data.sort) ? data.sort : 0,
       active: Boolean(data.active),
       bodyHtml: markdownToHtml(body)

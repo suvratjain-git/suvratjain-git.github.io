@@ -7,6 +7,7 @@
     "year": "2025",
     "summary": "Full-time senior software engineering on infrared search-and-track systems, real-time video pipelines, and Linux performance optimization.",
     "image": "",
+    "thumbnail": "",
     "sort": 2025,
     "active": true,
     "bodyHtml": "<p>Since January 2025, I have continued at Lockheed Martin as a full-time Senior Software Engineer. My work centers on next-generation infrared search and track technology, where performance, precision, and throughput all matter at the system level.</p>\n<p>In this role, I design high-throughput video processing pipelines for real-time data acquisition and compression, profile and optimize Linux systems to remove performance bottlenecks, and continue advancing low-latency CV/C++ platform capabilities. The position builds on the contractor phase, but with deeper long-term ownership over architecture, performance, and delivery.</p>"
@@ -14,11 +15,12 @@
   {
     "slug": "lockheed-martin-contractor",
     "title": "Lockheed Martin",
-    "role": "Senior Software Engineer (Contractor)",
+    "role": "Software Engineer (Contractor)",
     "date": "June 2023 - December 2024",
     "year": "2023",
     "summary": "Contract software engineering role focused on infrared search-and-track systems, low-latency AI/CV pipelines, and advanced C/C++ platform development.",
     "image": "",
+    "thumbnail": "",
     "sort": 2024,
     "active": false,
     "bodyHtml": "<p>I joined Lockheed Martin in June 2023 as a contractor, working as a Senior Software Engineer on next-generation technology development for infrared search and track systems. The role focused on building low-latency computer vision and AI capabilities on a custom FPGA-based compute platform while working close to the hardware and system architecture.</p>\n<p>During this phase, I drove implementation work in C/C++ for low-latency CV and AI pipelines, developed advanced mathematics and geospatial algorithms to improve precision, and contributed to the technical foundation that supported real-time sensing and analysis workflows.</p>"
@@ -31,6 +33,7 @@
     "year": "2020",
     "summary": "Led embedded software and electrical architecture for real-time entertainment systems across Disney, Universal Studios Japan, and ICON Park projects.",
     "image": "images/birket.jpg",
+    "thumbnail": "images/birket.jpg",
     "sort": 2020,
     "active": false,
     "bodyHtml": "<p>I worked at Birket Engineering from 2020 to 2023 as an Embedded Systems Engineer, leading embedded software and electrical architecture for interactive entertainment systems that demanded low latency, reliability, and maintainability in live environments.</p>\n<h3>Disney&#39;s Galactic Starcruiser</h3>\n<p>For Disney&#39;s Galactic Starcruiser, I led the software and electrical architecture for interactive, low-latency props used in a live entertainment setting. The work included engineering custom PCBs, developing embedded firmware libraries in C/C++, and designing radio protocols that could synchronize show props during performance without introducing visible lag or instability. I also developed sensor fusion algorithms that combined IMU data with audio signals to drive dynamic effects, and the overall project contributed directly to more than seven figures in revenue with a 25% to 30% profit margin.</p>\n<h3>Universal Studios Japan: Dream Coaster</h3>\n<p>On Universal Studios Japan: Dream Coaster, I led feature-driven and test-driven firmware development in C/C++ for a low-latency control system built around synchronized show behavior. I architected a real-time communication protocol to orchestrate animations across the experience, developed embedded LED driver algorithms for dynamic high-fidelity lighting effects, and implemented diagnostics and maintainability frameworks that helped operations teams reduce downtime. The delivered system was scalable, low maintenance, and helped increase company revenue by 20%.</p>\n<h3>ICON Park Media Server</h3>\n<p>For the ICON Park Media Server project, I architected a real-time media server capable of handling up to 30 concurrent cabin audio streams. I also developed the companion iOS application and designed the low-latency audio network architecture that tied the system together. The project was delivered four weeks ahead of schedule, and the interoperability approach I implemented reduced integration costs during deployment.</p>"
@@ -43,6 +46,7 @@
     "year": "2019",
     "summary": "An internship centered on microcontrollers, PCB design, and applied embedded systems work in a professional environment.",
     "image": "images/birket.jpg",
+    "thumbnail": "images/birket.jpg",
     "sort": 2019,
     "active": false,
     "bodyHtml": "<p>This internship gave me direct experience with professional embedded workflows and made the transition from classroom concepts to production engineering feel real. The work was technical, hands-on, and close to the hardware.</p>\n<ul class=\"timeline-bullets\"><li>Programmed 32-bit ARM Cortex-M microcontrollers such as the STM32F7 in C.</li><li>Designed and manufactured electrical schematics and printed circuit boards.</li><li>Applied data structures and algorithms to data moving across UART, SPI, and I2C interfaces.</li></ul>\n<p>It also became a defining checkpoint in my career, because it confirmed that embedded systems was the environment where I wanted to keep building long term.</p>"
@@ -55,6 +59,7 @@
     "year": "2018",
     "summary": "Engineering internship on UAV research, indoor navigation concepts, and technical vendor evaluation.",
     "image": "images/Universal/Interns.jpg",
+    "thumbnail": "images/Universal/Interns.jpg",
     "sort": 2018,
     "active": false,
     "bodyHtml": "<p>At Universal Creative, I worked with the Show Systems team on UAV-focused engineering problems. A major focus was identifying reliable and cost-effective approaches for indoor autonomous navigation without relying on GPS.</p>\n<ul class=\"timeline-bullets\"><li>Implemented a non-GPS indoor navigation system for drones.</li><li>Researched and developed emerging technologies for UAV applications.</li><li>Maintained vendor relationships and helped evaluate commercial solutions.</li></ul>\n<p>That challenge pushed me into a systems tradeoff mindset: balancing reliability, cost, and operational fit instead of just chasing technically impressive solutions. Our proof of concept substantially reduced costs compared to more traditional computer vision-heavy approaches.</p>"
@@ -67,6 +72,7 @@
     "year": "2017",
     "summary": "Early engineering role focused on wireless sensors, environmental monitoring systems, testing, and technical reporting.",
     "image": "images/PraxSoft/Installation.jpg",
+    "thumbnail": "images/PraxSoft/Installation.jpg",
     "sort": 2017,
     "active": false,
     "bodyHtml": "<p>PraxSoft gave me early exposure to applied engineering in the field. The work connected hardware, data, and real operational outcomes for infrastructure and environmental monitoring systems.</p>\n<ul class=\"timeline-bullets\"><li>Worked with wireless sensors and embedded controllers.</li><li>Conducted data analysis and generated technical reports.</li><li>Tested PCBs, assembled systems, and handled quality assurance work.</li></ul>\n<p>A large part of the work involved the Fog Monitoring System for the Florida Department of Transportation, where I helped assemble units, troubleshoot equipment, collect data, and support technical reporting that demonstrated system performance in practice.</p>"
