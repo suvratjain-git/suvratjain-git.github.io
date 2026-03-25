@@ -30,17 +30,17 @@
 				bottom: 0;
 				left: 50%;
 				width: 2px;
-				background: rgba(33, 41, 49, 0.15);
+				background: linear-gradient(to bottom, rgba(33, 41, 49, 0.08), rgba(24, 191, 239, 0.35), rgba(33, 41, 49, 0.08));
 				transform: translateX(-50%);
 			}
 
 			.timeline-item {
 				position: relative;
 				display: grid;
-				grid-template-columns: 1fr 4rem 1fr;
-				gap: 1.5rem;
+				grid-template-columns: 1fr 4.5rem 1fr;
+				gap: 1.75rem;
 				align-items: start;
-				margin-bottom: 3rem;
+				margin-bottom: 2rem;
 			}
 
 			.timeline-item:last-child {
@@ -49,14 +49,23 @@
 
 			.timeline-summary,
 			.timeline-detail {
-				background: #ffffff;
-				border: 1px solid rgba(33, 41, 49, 0.1);
-				box-shadow: 0 1rem 2.5rem rgba(33, 41, 49, 0.08);
+				background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), #ffffff);
+				border: 1px solid rgba(33, 41, 49, 0.08);
+				box-shadow: 0 1.25rem 3rem rgba(33, 41, 49, 0.08);
+				backdrop-filter: blur(8px);
 			}
 
 			.timeline-summary {
 				padding: 1.5rem;
 				align-self: center;
+				transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+			}
+
+			.timeline-item:hover .timeline-summary,
+			.timeline-item.is-active .timeline-summary {
+				transform: translateY(-0.2rem);
+				border-color: rgba(24, 191, 239, 0.24);
+				box-shadow: 0 1.5rem 3.5rem rgba(33, 41, 49, 0.12);
 			}
 
 			.timeline-item:nth-child(odd) .timeline-summary {
@@ -76,12 +85,12 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				width: 4rem;
-				height: 4rem;
+				width: 4.5rem;
+				height: 4.5rem;
 				margin: 0 auto;
 				border: 0;
 				border-radius: 999px;
-				background: #212931;
+				background: radial-gradient(circle at 30% 30%, #3bd3fb, #18bfef 58%, #0d7fa5 100%);
 				color: #ffffff;
 				cursor: pointer;
 				font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -89,16 +98,35 @@
 				font-weight: 900;
 				letter-spacing: 0.09em;
 				text-transform: uppercase;
-				transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-				box-shadow: 0 0 0 0.5rem rgba(255, 255, 255, 1);
+				box-shadow: 0 0 0 0.65rem rgba(255, 255, 255, 0.95), 0 1rem 2rem rgba(24, 191, 239, 0.25);
+				transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+			}
+
+			.timeline-node::after {
+				content: '';
+				position: absolute;
+				inset: -0.35rem;
+				border-radius: inherit;
+				border: 1px solid rgba(24, 191, 239, 0.25);
+				opacity: 0;
+				transform: scale(0.92);
+				transition: opacity 0.25s ease, transform 0.25s ease;
 			}
 
 			.timeline-node:hover,
 			.timeline-node:focus-visible,
 			.timeline-item.is-active .timeline-node {
-				background: #18bfef;
-				transform: scale(1.06);
+				transform: scale(1.08);
+				filter: saturate(1.08);
+				box-shadow: 0 0 0 0.65rem rgba(255, 255, 255, 0.95), 0 1.5rem 2.5rem rgba(24, 191, 239, 0.35);
 				outline: none;
+			}
+
+			.timeline-node:hover::after,
+			.timeline-node:focus-visible::after,
+			.timeline-item.is-active .timeline-node::after {
+				opacity: 1;
+				transform: scale(1);
 			}
 
 			.timeline-node-label {
@@ -125,14 +153,23 @@
 				text-align: right;
 			}
 
-			.timeline-detail {
+			.timeline-detail-wrap {
 				grid-column: 1 / -1;
-				display: none;
-				padding: 2rem;
+				overflow: hidden;
+				max-height: 0;
+				opacity: 0;
+				transform: translateY(-0.75rem);
+				transition: max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, transform 0.35s ease;
+				will-change: max-height, opacity, transform;
 			}
 
-			.timeline-item.is-active .timeline-detail {
-				display: block;
+			.timeline-item.is-active .timeline-detail-wrap {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.timeline-detail {
+				padding: 2rem;
 			}
 
 			.timeline-detail-grid {
@@ -167,20 +204,32 @@
 				margin-bottom: 0.75rem;
 			}
 
+			.timeline-image {
+				border-radius: 0.35rem;
+				overflow: hidden;
+			}
+
 			.timeline-image img {
 				display: block;
 				width: 100%;
 				height: auto;
 			}
 
+			.timeline-empty {
+				padding: 3rem 2rem;
+				text-align: center;
+				border: 1px solid rgba(33, 41, 49, 0.08);
+				background: #ffffff;
+			}
+
 			@media screen and (max-width: 980px) {
 				.timeline::before {
-					left: 2rem;
+					left: 2.2rem;
 					transform: none;
 				}
 
 				.timeline-item {
-					grid-template-columns: 4rem 1fr;
+					grid-template-columns: 4.5rem 1fr;
 				}
 
 				.timeline-summary,
@@ -198,12 +247,12 @@
 					position: static;
 					display: block;
 					width: auto;
-					margin-top: 0.5rem;
+					margin-top: 0.45rem;
 					transform: none;
 					text-align: center !important;
 				}
 
-				.timeline-detail {
+				.timeline-detail-wrap {
 					grid-column: 2;
 				}
 			}
@@ -223,200 +272,150 @@
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-        <div id="wrapper">
+		<div id="wrapper">
 
-            <!-- Header -->
-            <header id="header">
-                <a href="index.html" class="logo">Experience</a>
-            </header>
+			<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="logo">Experience</a>
+			</header>
 
-            <!-- Nav -->
-            <nav id="nav">
-                <ul class="links">
-                    <li><a href="index.html#header">Home</a></li>
-                    <li class="active"><a href="experience.html">Experience</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                </ul>
-                <ul class="icons">
-                    <li><a href="https://www.linkedin.com/in/suvratjain97/" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                    <li><a href="https://github.com/suvratjain12" class="icon fa-github"><span class="label">GitHub</span></a></li>
-                </ul>
-            </nav>
+			<!-- Nav -->
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html#header">Home</a></li>
+					<li class="active"><a href="experience.html">Experience</a></li>
+					<li><a href="projects.html">Projects</a></li>
+					<li><a href="resume.html">Resume</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/suvratjain97/" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/suvratjain12" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</nav>
 
-	            <!-- Main -->
-	            <div id="main">
-	                <section class="post">
-	                    <header class="major">
-	                        <span class="date">Career Timeline</span>
-	                        <h1>Experience</h1>
-	                        <p class="experience-intro">A visual timeline of my professional path. Click any milestone to open the full story, responsibilities, and project context.</p>
-	                    </header>
+			<!-- Main -->
+			<div id="main">
+				<section class="post">
+					<header class="major">
+						<span class="date">Career Timeline</span>
+						<h1>Experience</h1>
+						<p class="experience-intro">A visual timeline of my professional path.</p>
+					</header>
 
-	                    <div class="timeline" id="experienceTimeline">
-	                        <article class="timeline-item is-active">
-	                            <div class="timeline-summary">
-	                                <span class="date">January 2020 - Present</span>
-	                                <h3>Birket Engineering, Inc.</h3>
-	                                <p>Full-time embedded systems engineering focused on hardware-software integration, firmware, and electrical systems work.</p>
-	                            </div>
-	                            <button class="timeline-node" type="button" aria-expanded="true" aria-controls="timeline-detail-1">
-	                                2020
-	                                <span class="timeline-node-label">Embedded Systems Engineer</span>
-	                            </button>
-	                            <div class="timeline-detail" id="timeline-detail-1">
-	                                <div class="timeline-detail-grid">
-	                                    <div class="timeline-image">
-	                                        <img src="images/birket.jpg" alt="Birket Engineering" />
-	                                    </div>
-	                                    <div class="timeline-detail-copy">
-	                                        <span class="date">January 2020 - Present</span>
-	                                        <h2>Birket Engineering, Inc.</h2>
-	                                        <span class="timeline-role">Embedded Systems Engineer</span>
-	                                        <ul class="timeline-bullets">
-	                                            <li>Worked on embedded platforms where hardware and firmware had to operate as a single system.</li>
-	                                            <li>Built on internship experience and transitioned into a full-time engineering role.</li>
-	                                            <li>Continued developing depth in electronics, integration, and production-minded engineering work.</li>
-	                                        </ul>
-	                                        <p>I joined Birket full-time on January 1, 2020 as an Embedded Systems Engineer. The role represents the point where prior internship work turned into long-term engineering ownership and deeper system-level responsibility.</p>
-	                                        <p>The position aligns closely with my core interests in robotics, firmware development, and hardware-software integration, and it marks the strongest continuation point in my technical career to date.</p>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </article>
+					<div class="timeline" id="experienceTimeline">
+						<div class="timeline-empty">Loading experience timeline...</div>
+					</div>
+				</section>
+			</div>
 
-	                        <article class="timeline-item">
-	                            <div class="timeline-summary">
-	                                <span class="date">May 2019 - December 2019</span>
-	                                <h3>Birket Engineering, Inc.</h3>
-	                                <p>An internship centered on microcontrollers, PCB design, and applied embedded systems work in a professional environment.</p>
-	                            </div>
-	                            <button class="timeline-node" type="button" aria-expanded="false" aria-controls="timeline-detail-2">
-	                                2019
-	                                <span class="timeline-node-label">Embedded Systems Intern</span>
-	                            </button>
-	                            <div class="timeline-detail" id="timeline-detail-2">
-	                                <div class="timeline-detail-grid">
-	                                    <div class="timeline-image">
-	                                        <img src="images/birket.jpg" alt="Birket Engineering internship" />
-	                                    </div>
-	                                    <div class="timeline-detail-copy">
-	                                        <span class="date">May 2019 - December 2019</span>
-	                                        <h2>Birket Engineering, Inc.</h2>
-	                                        <span class="timeline-role">Embedded Systems Intern</span>
-	                                        <ul class="timeline-bullets">
-	                                            <li>Programmed 32-bit ARM Cortex-M microcontrollers such as the STM32F7 in C.</li>
-	                                            <li>Designed and manufactured electrical schematics and printed circuit boards.</li>
-	                                            <li>Applied data structures and algorithms to data moving across UART, SPI, and I2C interfaces.</li>
-	                                        </ul>
-	                                        <p>This internship gave me direct experience with professional embedded workflows and made the transition from classroom concepts to production engineering feel real. The work was technical, hands-on, and close to the hardware.</p>
-	                                        <p>It also became a defining checkpoint in my career, because it confirmed that embedded systems was the environment where I wanted to keep building long term.</p>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </article>
-
-	                        <article class="timeline-item">
-	                            <div class="timeline-summary">
-	                                <span class="date">August 2018 - December 2018</span>
-	                                <h3>Universal Creative</h3>
-	                                <p>Engineering internship on UAV research, indoor navigation concepts, and technical vendor evaluation.</p>
-	                            </div>
-	                            <button class="timeline-node" type="button" aria-expanded="false" aria-controls="timeline-detail-3">
-	                                2018
-	                                <span class="timeline-node-label">Engineering Intern</span>
-	                            </button>
-	                            <div class="timeline-detail" id="timeline-detail-3">
-	                                <div class="timeline-detail-grid">
-	                                    <div class="timeline-image">
-	                                        <img src="images/Universal/Interns.jpg" alt="Universal Creative internship" />
-	                                    </div>
-	                                    <div class="timeline-detail-copy">
-	                                        <span class="date">August 2018 - December 2018</span>
-	                                        <h2>Universal Creative</h2>
-	                                        <span class="timeline-role">Engineering Intern</span>
-	                                        <ul class="timeline-bullets">
-	                                            <li>Implemented a non-GPS indoor navigation system for drones.</li>
-	                                            <li>Researched and developed emerging technologies for UAV applications.</li>
-	                                            <li>Maintained vendor relationships and helped evaluate commercial solutions.</li>
-	                                        </ul>
-	                                        <p>At Universal Creative, I worked with the Show Systems team on UAV-focused engineering problems. A major focus was identifying reliable and cost-effective approaches for indoor autonomous navigation without relying on GPS.</p>
-	                                        <p>That challenge pushed me into a systems tradeoff mindset: balancing reliability, cost, and operational fit instead of just chasing technically impressive solutions. Our proof of concept substantially reduced costs compared to more traditional computer vision-heavy approaches.</p>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </article>
-
-	                        <article class="timeline-item">
-	                            <div class="timeline-summary">
-	                                <span class="date">May 2017 - November 2018</span>
-	                                <h3>PraxSoft Inc.</h3>
-	                                <p>Early engineering role focused on wireless sensors, environmental monitoring systems, testing, and technical reporting.</p>
-	                            </div>
-	                            <button class="timeline-node" type="button" aria-expanded="false" aria-controls="timeline-detail-4">
-	                                2017
-	                                <span class="timeline-node-label">Assistant Engineer</span>
-	                            </button>
-	                            <div class="timeline-detail" id="timeline-detail-4">
-	                                <div class="timeline-detail-grid">
-	                                    <div class="timeline-image">
-	                                        <img src="images/PraxSoft/Installation.jpg" alt="PraxSoft installation work" />
-	                                    </div>
-	                                    <div class="timeline-detail-copy">
-	                                        <span class="date">May 2017 - November 2018</span>
-	                                        <h2>PraxSoft Inc.</h2>
-	                                        <span class="timeline-role">Assistant Engineer</span>
-	                                        <ul class="timeline-bullets">
-	                                            <li>Worked with wireless sensors and embedded controllers.</li>
-	                                            <li>Conducted data analysis and generated technical reports.</li>
-	                                            <li>Tested PCBs, assembled systems, and handled quality assurance work.</li>
-	                                        </ul>
-	                                        <p>PraxSoft gave me early exposure to applied engineering in the field. The work connected hardware, data, and real operational outcomes for infrastructure and environmental monitoring systems.</p>
-	                                        <p>A large part of the work involved the Fog Monitoring System for the Florida Department of Transportation, where I helped assemble units, troubleshoot equipment, collect data, and support technical reporting that demonstrated system performance in practice.</p>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </article>
-	                    </div>
-	                </section>
-	            </div>
-
-            <!-- Footer -->
-            <footer id="footer">
-                <section class="split contact">
-                    <section>
-                        <h3>Email</h3>
-                        <p><a href="#">suvratjain101@gmail.com</a></p>
-                    </section>
-                    <section>
-                        <h3>Social</h3>
-                        <ul class="icons alt">
-                            <li><a href="https://www.linkedin.com/in/suvratjain97/" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                            <li><a href="https://github.com/suvratjain12" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
-                        </ul>
-                    </section>
-                </section>
-            </footer>
-
-        </div>
+			<!-- Footer -->
+			<footer id="footer">
+				<section class="split contact">
+					<section>
+						<h3>Email</h3>
+						<p><a href="#">suvratjain101@gmail.com</a></p>
+					</section>
+					<section>
+						<h3>Social</h3>
+						<ul class="icons alt">
+							<li><a href="https://www.linkedin.com/in/suvratjain97/" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://github.com/suvratjain12" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</section>
+				</section>
+			</footer>
+		</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				(function() {
-					var timeline = document.getElementById('experienceTimeline');
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			(function() {
+				var timeline = document.getElementById('experienceTimeline');
 
-					if (!timeline) {
+				if (!timeline) {
+					return;
+				}
+
+				function escapeHtml(value) {
+					return String(value)
+						.replace(/&/g, '&amp;')
+						.replace(/</g, '&lt;')
+						.replace(/>/g, '&gt;')
+						.replace(/"/g, '&quot;')
+						.replace(/'/g, '&#39;');
+				}
+
+				function renderTimeline(entries) {
+					if (!entries.length) {
+						timeline.innerHTML = '<div class="timeline-empty">No experience entries were found.</div>';
 						return;
 					}
 
+					timeline.innerHTML = entries.map(function(entry, index) {
+						var isActive = entry.active || index === 0;
+						var safeTitle = escapeHtml(entry.title);
+						var safeRole = escapeHtml(entry.role);
+						var safeDate = escapeHtml(entry.date);
+						var safeYear = escapeHtml(entry.year);
+						var safeSummary = escapeHtml(entry.summary);
+						var safeImage = escapeHtml(entry.image || '');
+						var safeSlug = escapeHtml(entry.slug);
+
+						return [
+							'<article class="timeline-item' + (isActive ? ' is-active' : '') + '" data-slug="' + safeSlug + '">',
+							'<div class="timeline-summary">',
+							'<span class="date">' + safeDate + '</span>',
+							'<h3>' + safeTitle + '</h3>',
+							'<p>' + safeSummary + '</p>',
+							'</div>',
+							'<button class="timeline-node" type="button" aria-expanded="' + (isActive ? 'true' : 'false') + '" aria-controls="timeline-detail-' + safeSlug + '">',
+							safeYear,
+							'<span class="timeline-node-label">' + safeRole + '</span>',
+							'</button>',
+							'<div class="timeline-detail-wrap">',
+							'<div class="timeline-detail" id="timeline-detail-' + safeSlug + '">',
+							'<div class="timeline-detail-grid">',
+							safeImage ? '<div class="timeline-image"><img src="' + safeImage + '" alt="' + safeTitle + '" /></div>' : '',
+							'<div class="timeline-detail-copy">',
+							'<span class="date">' + safeDate + '</span>',
+							'<h2>' + safeTitle + '</h2>',
+							'<span class="timeline-role">' + safeRole + '</span>',
+							entry.bodyHtml,
+							'</div>',
+							'</div>',
+							'</div>',
+							'</div>',
+							'</article>'
+						].join('');
+					}).join('');
+
+					initializeTimeline();
+				}
+
+				function initializeTimeline() {
 					var items = Array.prototype.slice.call(timeline.querySelectorAll('.timeline-item'));
+
+					function syncHeights() {
+						items.forEach(function(item) {
+							var wrap = item.querySelector('.timeline-detail-wrap');
+
+							if (!wrap) {
+								return;
+							}
+
+							if (item.classList.contains('is-active')) {
+								wrap.style.maxHeight = wrap.scrollHeight + 'px';
+							} else {
+								wrap.style.maxHeight = '0px';
+							}
+						});
+					}
 
 					function setActiveItem(nextItem) {
 						items.forEach(function(item) {
@@ -429,6 +428,8 @@
 								button.setAttribute('aria-expanded', isActive ? 'true' : 'false');
 							}
 						});
+
+						window.requestAnimationFrame(syncHeights);
 					}
 
 					items.forEach(function(item) {
@@ -442,8 +443,24 @@
 							setActiveItem(item);
 						});
 					});
-				})();
-			</script>
 
-		</body>
+					window.addEventListener('resize', syncHeights);
+					syncHeights();
+				}
+
+				fetch('assets/data/experience.json')
+					.then(function(response) {
+						if (!response.ok) {
+							throw new Error('Failed to load experience data');
+						}
+
+						return response.json();
+					})
+					.then(renderTimeline)
+					.catch(function() {
+						timeline.innerHTML = '<div class="timeline-empty">Unable to load experience timeline data.</div>';
+					});
+			})();
+		</script>
+	</body>
 </html>

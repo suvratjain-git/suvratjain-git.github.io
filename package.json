@@ -4,6 +4,8 @@
   "private": true,
   "description": "Static portfolio website for suvratjain.com",
   "scripts": {
+    "build:experience": "node scripts/build-experience.mjs",
+    "build": "npm run build:experience",
     "serve": "npx http-server .",
     "test": "echo 'No automated tests configured'"
   },
