@@ -222,7 +222,7 @@
 				background: #ffffff;
 			}
 
-			@media screen and (max-width: 980px) {
+			@media screen and (max-width: 786) {
 				.timeline::before {
 					left: 2.2rem;
 					transform: none;
@@ -358,7 +358,7 @@
 					}
 
 					timeline.innerHTML = entries.map(function(entry, index) {
-						var isActive = entry.active || index === 0;
+						var isActive = false;
 						var safeTitle = escapeHtml(entry.title);
 						var safeRole = escapeHtml(entry.role);
 						var safeDate = escapeHtml(entry.date);
