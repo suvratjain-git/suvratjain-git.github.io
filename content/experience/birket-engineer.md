@@ -1,7 +1,7 @@
 ---
 title: "Birket Engineering, Inc."
 role: "Embedded Systems Engineer"
-date: "January 2020 - 2023"
+date: "January 2020 - June 2023"
 year: "2020"
 summary: "Led embedded software and electrical architecture for real-time entertainment systems across Disney, Universal Studios Japan, and ICON Park projects."
 image: "images/birket.jpg"
