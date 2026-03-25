@@ -1,6 +1,6 @@
 ---
 title: "Lockheed Martin"
-role: "Senior Software Engineer (Contractor)"
+role: "Software Engineer (Contractor)"
 date: "June 2023 - December 2024"
 year: "2023"
 summary: "Contract software engineering role focused on infrared search-and-track systems, low-latency AI/CV pipelines, and advanced C/C++ platform development."
